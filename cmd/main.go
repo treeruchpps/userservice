@@ -48,5 +48,5 @@ func main() {
 		authRequired.PUT("/users/:id", userHandler.UpdateUser)
 		authRequired.DELETE("/users/:id", userHandler.DeleteUser)
 	}
-	r.Run(":80")
+	r.Run(":8080")
 }
