@@ -12,6 +12,9 @@ import (
 	"users/internal/middleware"
 	"users/internal/repository"
 	"users/internal/service"
+
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 func main() {
@@ -29,6 +32,9 @@ func main() {
 	userHandler := handler.NewUserHandler(userService)
 
 	r := gin.Default()
+
+	// Swagger endpoint
+	r.GET("/docs/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	// Health Check ไม่ต้องใช้ Token
 	r.GET("/health", func(c *gin.Context) {
